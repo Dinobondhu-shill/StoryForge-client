@@ -27,6 +27,7 @@ const [loginErr, setLoginErr] = useState('')
     <div className="md:px-10 py-8 text-center">
       <h2 className="text-2xl font-caption"><span className="font-bold  text-3xl text-blue-400">Join the conversation!</span><br /> Login and connect with fellow bloggers from around the globe.</h2>
      <div className="md:flex justify-between items-center pt-10">
+
      <div className="w-2/4">
      <Lottie loop={true} animationData={loginL} className="w-full" />
       </div>
