@@ -10,7 +10,7 @@ const Navbar = () => {
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#206463b1" : "black",
+      color: isActive ? "#0047AB" : "black",
       
       
     };
@@ -19,10 +19,34 @@ const Navbar = () => {
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#206463b1" : "black",
+      color: isActive ? "#EDEDED" : "black",
       
     };
-  }}>Art & Craft Item</NavLink>
+  }}>All Blogs</NavLink>
+  <NavLink to={'/all-items'}
+  style={({ isActive,}) => {
+    return {
+      fontWeight: isActive ? "bold" : "",
+      color: isActive ? "#EDEDED" : "black",
+      
+    };
+  }}>Add Blogs</NavLink>
+  <NavLink to={'/all-items'}
+  style={({ isActive,}) => {
+    return {
+      fontWeight: isActive ? "bold" : "",
+      color: isActive ? "#EDEDED" : "black",
+      
+    };
+  }}>Featured Blogs</NavLink>
+  <NavLink to={'/all-items'}
+  style={({ isActive,}) => {
+    return {
+      fontWeight: isActive ? "bold" : "",
+      color: isActive ? "#EDEDED" : "black",
+      
+    };
+  }}>WishList</NavLink>
   
   
  </>
@@ -30,7 +54,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="flex justify-center py-3 border-b-2">
-  <Link to={"/"} className=" text-3xl font-caption font-bold">story<span className="text-[#9e1de3d2]">Forge</span></Link>
+  <Link to={"/"} className=" text-3xl font-caption font-bold">story<span className="text-[#0047AB]">Forge</span></Link>
 </div>
       <div className="navbar flex justify-between pt-4 md:px-10 font-sand">
 <div className="dropdown lg:hidden z-30">
@@ -41,7 +65,7 @@ const Navbar = () => {
     {Navbar}
     </ul>
   </div>
-  <div className="flex-0 hidden lg:block mr-4">
+  <div className="flex-0 hidden lg:block mr-4 font-caption">
     <ul data-aos="flip-left" data-aos-duration="1000" className="flex gap-4">
       {Navbar}
     </ul>
@@ -61,8 +85,8 @@ const Navbar = () => {
     // className="font-caption hover:scale-105 font-bold border-2 py-2 px-4 rounded-md ">Log out</Link>
     //   </>  : 
     <div className="flex gap-4">
-      <Link data-aos="fade-up-left" to={'/login'} className="font-caption hover:scale-105 ml-2 font-bold border-2 py-2 px-4 rounded-md ">Log In</Link>
-      <Link data-aos="fade-up-left" to={'/register'} className="font-caption hover:scale-105  font-bold border-2 py-2 px-4 rounded-md ">Sign Up</Link>
+      <Link data-aos="fade-up-left" to={'/login'} className="font-caption text-[#0047AB] hover:scale-105 ml-2 font-bold border-2 py-2 px-4 rounded-md ">Log In</Link>
+      <Link data-aos="fade-up-left" to={'/register'} className="font-caption hover:scale-105  font-bold border-2 py-2 px-4 text-[#0047AB] rounded-md ">Sign Up</Link>
       </div>
     }
 
