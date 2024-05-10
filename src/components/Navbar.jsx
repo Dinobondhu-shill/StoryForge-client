@@ -26,7 +26,7 @@ console.log(user)
       
     };
   }}>All Blogs</NavLink>
-  <NavLink to={'/all-items'}
+  <NavLink to={"/add-blog"}
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",

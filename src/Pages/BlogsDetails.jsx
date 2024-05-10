@@ -12,14 +12,6 @@ const BlogsDetails = () => {
   const {user} = useContext(AuthContext)
   const [comment, setComments] = useState([])
 
-  useEffect(()=>{
-    fetch(`http://localhost:5000/allComments/${_id}`)
-    .then(res=> res.json())
-    .then(data=> setComments(data))
-  },[_id])
-
-
-
   const handleComment = (e) =>{
     e.preventDefault();
     const form = e.target
@@ -46,6 +38,12 @@ form.reset()
 
 })
   }
+
+  useEffect(()=>{
+    fetch(`http://localhost:5000/allComments/${_id}`)
+    .then(res=> res.json())
+    .then(data=> setComments(data))
+  },[_id])
   return (
     <div className="md:px-10 lg:px-24 my-5">
       <ToastContainer></ToastContainer>
