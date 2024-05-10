@@ -12,6 +12,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import FirebaseProvider from './firebase/FirebaseProvider';
 import AllBlogs from './Pages/AllBlogs';
+import BlogsDetails from './Pages/BlogsDetails';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
       {
         path:"/all-blogs",
         element:<AllBlogs></AllBlogs>
+      },
+      {
+        path:"/all-blogs/:id",
+        element:<BlogsDetails></BlogsDetails>,
+        loader:({params})=> fetch(`http://localhost:5000/all-blogs/${params.id}`)
+
       }
     ]
   },
