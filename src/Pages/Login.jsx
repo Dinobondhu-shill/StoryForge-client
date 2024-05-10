@@ -63,7 +63,7 @@ className=" flex flex-col w-1/2 gap-3">
 {
   loginErr && <span className="text-bold text-red-600 mt-5">{loginErr}</span>
 }
-<div className="w-2/4">
+<div className="md:w-2/4">
 <p data-aos="fade-left" className="mt-4 text-[16px] pb-4">Don't have an account? <Link to={'/register'} className="underline  text-blue-400">Register</Link></p> <hr />
 <h2 data-aos="fade-right" className="font-bold mt-4">Or Continue With:</h2>
 <div className="flex justify-between mt-4 ju">
