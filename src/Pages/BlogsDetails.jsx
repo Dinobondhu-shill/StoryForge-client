@@ -1,14 +1,23 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../firebase/FirebaseProvider";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
+import Comment from "../components/Comment";
 
 
 const BlogsDetails = () => {
   const blog = useLoaderData()
   const {title, image, long_description, category, posted_date, _id} = blog;
   const {user} = useContext(AuthContext)
+  const [comment, setComments] = useState([])
+
+  useEffect(()=>{
+    fetch(`http://localhost:5000/allComments/${_id}`)
+    .then(res=> res.json())
+    .then(data=> setComments(data))
+  },[_id])
+
 
 
   const handleComment = (e) =>{
@@ -59,8 +68,8 @@ form.reset()
         </form>
       </div>
       {/* show the -comment here */}
-      <div>
-
+      <div className="mt-10 flex flex-col gap-10 w-2/4 ">
+        {comment && comment.map(item => <Comment key={item._id} item={item}></Comment>)}
       </div>
     </div>
   );
