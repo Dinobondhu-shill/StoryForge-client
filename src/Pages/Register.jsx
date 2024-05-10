@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import registerl from "../../public/register.json"
 import { AuthContext } from '../firebase/FirebaseProvider';
 import Swal from 'sweetalert2';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const {createUser, updateUserProfile} = useContext(AuthContext)
@@ -25,7 +26,7 @@ const Register = () => {
       .then(user =>{
         setSuccessRegister('User Created Successfully')
       toast.success('Register Successful')
-      Swal("Registration Successfull");
+      
       updateUserProfile(data.fullName, data.photoURL)
         .then(()=>{
           navigate('/')
@@ -33,6 +34,7 @@ const Register = () => {
       })
       })
       .catch((error)=>{
+        console.log(error)
         setRegisterError("Something went wrong")
       })
     }
