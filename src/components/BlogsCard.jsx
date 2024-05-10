@@ -17,7 +17,7 @@ const BlogsCard = ({blog}) => {
         <p className="font-sand ">{short_description}</p>
       </div>
       <div className="flex justify-between items-center">
-      <Link className="px-4 py-2 border ">View Details</Link>
+      <Link to={`/all-blogs/${_id}`} className="px-4 py-2 border ">View Details</Link>
       <button data-tip={"add to wishlist"} className="w-8 h-8 tooltip rounded-full border-2 flex items-center justify-center text-2xl font-bold text-red-500"><CiHeart/></button>
       </div>
     </div>

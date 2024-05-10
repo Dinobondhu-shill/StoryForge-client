@@ -18,7 +18,7 @@ console.log(user)
       
     };
   }}>Home</NavLink>
-  <NavLink to={'/all-items'}
+  <NavLink to={"/all-blogs"}
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",

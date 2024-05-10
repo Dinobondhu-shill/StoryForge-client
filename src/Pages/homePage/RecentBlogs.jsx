@@ -17,7 +17,7 @@ const RecentBlogs = () => {
       {blogs.slice(0,6).map(blog=> <BlogsCard key={blog._id} blog={blog}></BlogsCard>)}
       </div>
       <div className="w-full flex justify-center items-center py-4">
-      <Link className="px-4 py-2 border rounded-md hover:bg-cyan-300">All Blogs</Link>
+      <Link to={"/all-blogs"} className="px-4 py-2 border rounded-md hover:bg-cyan-300">All Blogs</Link>
       </div>
     </div>
   );
