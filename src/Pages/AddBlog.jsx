@@ -13,9 +13,10 @@ const handleAddBlog = e =>{
   const image = form.image.value
   const short_description = form.short_description.value
   const long_description = form.long_description.value
-  const postedBy = form.userName.value
-  const postedEmail = form.email.value
-  const blog = {title,category, image, short_description, long_description,postedBy, postedEmail}
+  const postedBy = user.displayName
+  const postedEmail = user.email
+  const photoOfOwner = user.photoURL
+  const blog = {title,category, image, short_description, long_description,postedBy, postedEmail, photoOfOwner}
 
 
   fetch('http://localhost:5000/add-blog',
@@ -33,9 +34,9 @@ if(data.insertedId){
 
 Swal.fire({
 title: 'Success!',
-text: 'Item added Successfully',
+text: 'Blog added Successfully',
 icon: 'success',
-confirmButtonText: 'Thank you'
+confirmButtonText: 'Thank you sharing'
 })
 form.reset()
 }
@@ -45,7 +46,7 @@ form.reset()
 }
 
   return (
-    <div className="md:px-10 my-10">
+    <div className="md:px-10 lg:px-24 my-10">
       <div className="text-center text-black">
         <h2 className="text-2xl text-center mb-3">Share your thought to the world!</h2>
         <p>Ready to make your mark? Dive in and start crafting your next blog post. Your insights have the <br /> power to inform, inspire, and ignite change. Happy Blogging!</p>
@@ -98,27 +99,7 @@ form.reset()
         </div>
 
       </div>
-      
-      {/* form row-5 */}
-      <div className="w-full flex gap-5">
-        <div className="mb-2 w-1/2">
-          <h5 className="font-normal text-lg pl-2">User Name:</h5>
-          <input type="text" name="userName" disabled defaultValue={user?.displayName} placeholder="Enter Item Name"
-            className="input input-bordered w-full" />
-
-        </div>
-
-        <div className="mb-2 w-1/2">
-          <h5 className="font-normal text-lg pl-2">User Email:</h5>
-          <input disabled name="email" type="text" defaultValue={user?.email} placeholder="Enter Item Name"
-            className="input input-bordered w-full" />
-
-        </div>
-
-      </div>
-      
-
-      <button type="submit" className="btn btn-block bg-[#63c0cdb1] hover:bg-[#63c0cdb1] "> submit </button>
+      <button type="submit" className="btn btn-block bg-[#63c0cdb1] hover:bg-[#63c0cdb1] "> Post</button>
     </form>
       </div>
     </div>
