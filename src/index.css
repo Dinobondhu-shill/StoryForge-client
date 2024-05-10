@@ -13,3 +13,9 @@
 .font-sand{
   font-family: "Quicksand", sans-serif;
 }
+*{
+  font-family: "PT Serif Caption", serif;
+}
+::selection{
+  color: #31c1bcc9;
+}
