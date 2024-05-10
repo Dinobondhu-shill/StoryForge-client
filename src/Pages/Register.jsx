@@ -1,21 +1,41 @@
 import Lottie from 'lottie-react';
-import  { useState } from 'react';
+import  { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosEye, IoIosEyeOff } from 'react-icons/io';
-import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import registerl from "../../public/register.json"
+import { AuthContext } from '../firebase/FirebaseProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-  
+  const {createUser, updateUserProfile} = useContext(AuthContext)
   const [showPassword, setShowPassword] = useState(false);
   const [registerError, setRegisterError] = useState('');
   const [successRegister, setSuccessRegister] = useState('')
+  const navigate = useNavigate();
+  
   const {register,
     handleSubmit,
     formState: { errors },watch, } = useForm();
     const password = watch("Password");
 
+    const onSubmit = (data) => {
+      createUser(data.email, data.Password)
+      .then(user =>{
+        setSuccessRegister('User Created Successfully')
+      toast.success('Register Successful')
+      Swal("Registration Successfull");
+      updateUserProfile(data.fullName, data.photoURL)
+        .then(()=>{
+          navigate('/')
+          
+      })
+      })
+      .catch((error)=>{
+        setRegisterError("Something went wrong")
+      })
+    }
   return (
     <div className='lg:px-24 md:py-16 md:flex justify-between bg-[#ffffff]'>
       <div className='bg-[#0047ab42] rounded-lg w-full flex flex-col items-center justify-center'>
@@ -28,7 +48,7 @@ const Register = () => {
         <h3 className='text-6xl font-bold'>Register !</h3>
         <p className='font-semibold py-3'>Please complete to create your account</p>
       <form data-aos="zoom-in"
-        // onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
         className="max-w-xl font-caption  rounded-xl py-2"
       >
         <div className="mb-2">

@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Lottie from "lottie-react";
 import loginL from "../../public/login.json"
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
+import { AuthContext } from "../firebase/FirebaseProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -15,6 +17,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 const [login, setLogin] = useState('')
 const [loginErr, setLoginErr] = useState('')
+const navigate = useNavigate();
+const location = useLocation();
+const {signIn, googleLogin, githubLogin, facebookLogin} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -22,6 +27,24 @@ const [loginErr, setLoginErr] = useState('')
   } = useForm();
 
 
+  const onSubmit = (data) => {
+    signIn(data.Email, data.Password)
+    .then(res=>{
+      setLogin('login successful')
+      navigate(location?.state || '/')
+      Swal("You are now logged in")
+    })
+    .catch(error=>{
+      console.log(error)
+      setLoginErr('Email or Password is not correct')
+    })
+  }
+  const handleSocailLogin = socialProvider =>{
+    socialProvider ()
+    .then((result)=>{
+      navigate(location?.state || '/')
+    })
+  }
 
   return (
     <div className="md:px-10 py-8 text-center">
@@ -33,7 +56,7 @@ const [loginErr, setLoginErr] = useState('')
       </div>
       <div className="w-2/4 ml-32">
       <form
-        // onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
 className=" flex flex-col w-1/2 gap-3">
 <label data-aos="fade-down" data-os-duration="1000" className="input input-bordered flex items-center gap-2">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" /><path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" /></svg>
@@ -58,7 +81,7 @@ className=" flex flex-col w-1/2 gap-3">
 <button  data-aos="zoom-in" type="submit" className=" border font-caption text-white py-3 rounded-xl font-bold bg-blue-400">Log In</button>
 </form>
 {
-  login && <span className="text-bold text-green-600 mt-5">{login}</span>
+  login && <span className="text-bold text-green-600 mt-5 w-full">{login}</span>
 }
 {
   loginErr && <span className="text-bold text-red-600 mt-5">{loginErr}</span>
@@ -68,13 +91,13 @@ className=" flex flex-col w-1/2 gap-3">
 <h2 data-aos="fade-right" className="font-bold mt-4">Or Continue With:</h2>
 <div className="flex justify-between mt-4 ju">
 <button 
-// onClick={()=>  handleSocailLogin(googleLogin)}
+onClick={()=>  handleSocailLogin(googleLogin)}
  className="text-4xl"> <FcGoogle /> </button>
 <button 
-// onClick={()=> handleSocailLogin(githubLogin)}
+onClick={()=> handleSocailLogin(githubLogin)}
  className="text-4xl"> <FaGithub /> </button>
 <button 
-// onClick={()=> handleSocailLogin(facebookLogin)}
+onClick={()=> handleSocailLogin(facebookLogin)}
  className="text-4xl text-blue-500"> <SiFacebook /> </button>
 </div>
 </div>

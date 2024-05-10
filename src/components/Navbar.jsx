@@ -1,9 +1,12 @@
 // import { useContext } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../firebase/FirebaseProvider";
 
 
 const Navbar = () => {
-
+const {user, logOut} = useContext(AuthContext)
+console.log(user)
 
  const Navbar = <>
  <NavLink to={'/'}
@@ -73,17 +76,17 @@ const Navbar = () => {
 <div className="flex-0 gap-2">
   
 {
-    //   user ? <>
-    //   <div  data-tip={user?.displayName}  className="btn-circle avatar tooltip ml-3">
-    //     <div className="w-10 rounded-full " >
-    //       <img data-aos="zoom-in" data-aos-delay="50" src={user?.photoURL}/>
-    //     </div>
-    //   </div>
+      user ? <>
+      <div  data-tip={user?.displayName}  className="btn-circle avatar tooltip ml-3">
+        <div className="w-10 rounded-full " >
+          <img data-aos="zoom-in" data-aos-delay="50" src={user?.photoURL}/>
+        </div>
+      </div>
     
-    // <Link data-aos="fade-up-left"
-    // //  onClick={()=> logOut()} 
-    // className="font-caption hover:scale-105 font-bold border-2 py-2 px-4 rounded-md ">Log out</Link>
-    //   </>  : 
+    <Link data-aos="fade-up-left"
+     onClick={()=> logOut()} 
+    className="font-caption hover:scale-105 font-bold border-2 py-2 px-4 rounded-md ">Log out</Link>
+      </>  : 
     <div className="flex gap-4">
       <Link data-aos="fade-up-left" to={'/login'} className="font-caption text-[#0047AB] hover:scale-105 ml-2 font-bold border-2 py-2 px-4 rounded-md ">Log In</Link>
       <Link data-aos="fade-up-left" to={'/register'} className="font-caption hover:scale-105  font-bold border-2 py-2 px-4 text-[#0047AB] rounded-md ">Sign Up</Link>
