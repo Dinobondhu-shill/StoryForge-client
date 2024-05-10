@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import Lottie from 'lottie-react';
+import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { IoIosEye, IoIosEyeOff } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import registerl from "../../public/register.json"
 
 const Register = () => {
   
@@ -16,10 +18,13 @@ const Register = () => {
 
   return (
     <div className='lg:px-24 md:py-16 md:flex justify-between bg-[#ffffff]'>
-      <div>
-
+      <div className='bg-[#0047ab42] rounded-lg w-full flex flex-col items-center justify-center'>
+        <h3 className='text-3xl font-bold'><span className='text-4xl'>Connect with us </span><br /> and share your experience</h3>
+      <div >
+    <Lottie loop={true} animationData={registerl} className="w-full" />
       </div>
-      <div className='border-l-2 md:px-20 '>
+      </div>
+      <div className=' md:px-20 '>
         <h3 className='text-6xl font-bold'>Register !</h3>
         <p className='font-semibold py-3'>Please complete to create your account</p>
       <form data-aos="zoom-in"
@@ -108,7 +113,7 @@ const Register = () => {
         </div>
         <button
           type="submit"
-          className="bg-[#2064637d] mt-5 text-white py-3 rounded-xl font-bold hover:bg-[#2064637d] p-32"
+          className="bg-[#0047ab63] mt-5 text-white py-3 rounded-xl font-bold p-32"
         >
           Register
         </button>
@@ -124,7 +129,7 @@ const Register = () => {
         }
         <p className="mt-4 text-[16px] text-center">
           Already have an account?{" "}
-          <Link to={"/login"} className="underline text-[#a456a4]">
+          <Link to={"/login"} className="underline text-[#567aa4]">
             Log in
           </Link>
         </p>

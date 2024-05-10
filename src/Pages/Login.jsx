@@ -25,7 +25,7 @@ const [loginErr, setLoginErr] = useState('')
 
   return (
     <div className="md:px-10 py-8 text-center">
-      <h2 className="text-2xl font-caption"><span className="font-bold  text-3xl text-blue-400">Join the conversation!</span><br /> Login and connect with fellow bloggers from around the globe.</h2>
+      <h2 className="text-2xl font-caption pb-8"><span className="font-bold  text-3xl text-blue-400">Join the conversation!</span><br /> Login and connect with fellow bloggers from around the globe.</h2>
      <div className="md:flex justify-between items-center pt-10">
 
      <div className="w-2/4">
@@ -55,7 +55,7 @@ className=" flex flex-col w-1/2 gap-3">
 </label>
 {errors.Password && <span className="text-red-700 font-bold">You must enter your Password</span>}
 
-<button  data-aos="zoom-in" type="submit" className=" border font-lobister text-white py-3 rounded-xl font-bold bg-blue-400">Log In</button>
+<button  data-aos="zoom-in" type="submit" className=" border font-caption text-white py-3 rounded-xl font-bold bg-blue-400">Log In</button>
 </form>
 {
   login && <span className="text-bold text-green-600 mt-5">{login}</span>
