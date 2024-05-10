@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { CiHeart } from "react-icons/ci";
+
 
 
 const BlogsCard = ({blog}) => {
@@ -9,9 +12,13 @@ const BlogsCard = ({blog}) => {
       <h3 className="bg-[#4f68b896] w-fit rounded-lg px-1 absolute top-0 right-0 z-10 text-white">{category}</h3>
       </div>
      
-      <div>
+      <div className="mb-5">
         <h2 className="py-2 text-xl font-semibold">{title}</h2>
         <p className="font-sand ">{short_description}</p>
+      </div>
+      <div className="flex justify-between items-center">
+      <Link className="px-4 py-2 border ">View Details</Link>
+      <button data-tip={"add to wishlist"} className="w-8 h-8 tooltip rounded-full border-2 flex items-center justify-center text-2xl font-bold text-red-500"><CiHeart/></button>
       </div>
     </div>
   );
