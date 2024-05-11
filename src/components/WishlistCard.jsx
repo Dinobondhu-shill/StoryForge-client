@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const WishlistCard = ({item}) => {
   const {_id} = item
 const data= item?.blog
-const {image, short_description, title, posted_date, category, } = data
+const {image, short_description, title, posted_date, category, _id:post_id} = data
 
 const handleDeleteWishlist = (_id) =>{
   Swal.fire({
@@ -46,12 +46,13 @@ const handleDeleteWishlist = (_id) =>{
       <img src={image} alt="" className='w-72 h-44 rounded-md'/>
       <div className="mb-5">
         <h2 className="py-2 text-xl font-semibold">{title}</h2>
-        <p># Posted on: {posted_date}</p>
+        <p>Posted on: {posted_date}</p>
+        <p className="bg-[#4f68b896] w-fit rounded-lg px-1 my-2"> #{category}</p>
         <p className="font-sand ">{short_description}</p>
       </div>
     </div>
     <div className="flex justify-between items-center">
-      <Link to={`/all-blogs/${_id}`} className="px-4 py-2 border ">View Details</Link>
+      <Link to={`/all-blogs/${post_id}`} className="px-4 py-2 border ">View Details</Link>
       <button 
       onClick={()=> handleDeleteWishlist(_id)}
        data-tip={"Delete"} className="w-8 h-8 tooltip rounded-full border-2 flex items-center justify-center text-2xl font-bold text-red-500"><MdDelete/></button>
