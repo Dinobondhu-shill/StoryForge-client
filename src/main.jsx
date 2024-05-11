@@ -14,6 +14,7 @@ import FirebaseProvider from './firebase/FirebaseProvider';
 import AllBlogs from './Pages/AllBlogs';
 import BlogsDetails from './Pages/BlogsDetails';
 import AddBlog from './Pages/AddBlog';
+import Wishlist from './Pages/Wishlist';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:"/add-blog",
         element:<AddBlog/>
+      },
+      {
+        path:"/wishlist",
+        element:<Wishlist></Wishlist>
       }
     ]
   },

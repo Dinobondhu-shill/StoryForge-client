@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../firebase/FirebaseProvider";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 
 const AddBlog = () => {
@@ -16,7 +17,8 @@ const handleAddBlog = e =>{
   const postedBy = user.displayName
   const postedEmail = user.email
   const photoOfOwner = user.photoURL
-  const blog = {title,category, image, short_description, long_description,postedBy, postedEmail, photoOfOwner}
+  const posted_date =moment().format('l')
+  const blog = {title,category, image, short_description, long_description,postedBy, postedEmail, photoOfOwner, posted_date}
 
 
   fetch('http://localhost:5000/add-blog',

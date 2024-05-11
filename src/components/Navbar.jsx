@@ -42,7 +42,7 @@ console.log(user)
       
     };
   }}>Featured Blogs</NavLink>
-  <NavLink to={'/all-items'}
+  <NavLink to={'/wishlist'}
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
