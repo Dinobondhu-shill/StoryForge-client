@@ -8,10 +8,12 @@ import Comment from "../components/Comment";
 
 const BlogsDetails = () => {
   const blog = useLoaderData()
-  const {title, image, long_description, category, posted_date, _id} = blog;
+  const {title, image, long_description, category, posted_date, _id, 
+    postedBy, 
+    postedEmail, photoOfOwner} = blog;
   const {user} = useContext(AuthContext)
   const [comment, setComments] = useState([])
-
+  const userEmail = user?.email
   const handleComment = (e) =>{
     e.preventDefault();
     const form = e.target
@@ -58,11 +60,18 @@ form.reset()
       </div>
       <hr />
       {/* comment area */}
-      <div className="mt-10 w-full">
+      
+<div className="mt-10 w-full">
         <h2>Add Your Comment</h2>
         <form onSubmit={handleComment}>
-        <textarea name="comment" className="textarea textarea-bordered w-2/4 mt-2 " placeholder="Write your comment here"></textarea>
-        <input type="submit" value="Comment" className="block btn bg-cyan-200 hover:bg-cyan-300"/>
+        
+        {
+          userEmail === postedEmail ? <>
+          <textarea name="comment" disabled className="textarea textarea-bordered w-2/4 mt-2 " placeholder="You can't comment on your own blog"></textarea>
+          <input type="submit" disabled value="Comment" className="block btn bg-cyan-200 hover:bg-cyan-300"/></> :<>
+          <textarea name="comment" className="textarea textarea-bordered w-2/4 mt-2 " placeholder="Write your comment here"></textarea>
+          <input type="submit" value="Comment" className="block btn bg-cyan-200 hover:bg-cyan-300"/></>
+        }
         </form>
       </div>
       {/* show the -comment here */}

@@ -5,11 +5,13 @@ import { ToastContainer, toast } from 'react-toastify';
 const NewsLetter = () => {
   const handleSubscribe = (e) =>{
     e.preventDefault()
+    const form = e.target
     // console.log(e.target.email.value.length)
     // if(e.target.email.value.length > 15){
       
     // }
     toast.success("Thanks For Subscribing")
+    form.reset()
   }
   return (
     <div className='w-full flex justify-center flex-col items-center  py-10 bg-[#53a4cd74] px-24 '>
