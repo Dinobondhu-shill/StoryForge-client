@@ -1,22 +1,24 @@
 
 import Marquee from "react-fast-marquee";
 import BlogsCard from "../components/BlogsCard";
-import { FaChevronDown } from "react-icons/fa";
-import { useQuery } from "@tanstack/react-query";
-
-
+import { useEffect, useState } from "react";
 
 const AllBlogs = () => {
-  const { isPending, data: blogs, error } = useQuery({
-    queryKey: ['blogs'],
-    queryFn: async ()=> {
-      const res = await fetch('http://localhost:5000/blogs')
-      return res.json()
-    }
-  })
+  const [blogs, setBlogs] = useState([])
+  const [filter, setFilter] = useState([])
+  const [search, setSearch] = useState([])
 
-if(isPending) return <span className="loading block mx-auto text-6xl text-center loading-spinner text-info "></span>
+useEffect(()=>{
+  fetch(`http://localhost:5000/blogs?filter=${filter}&search=${search}`)
+  .then(res=> res.json())
+  .then(data=> setBlogs(data))
+},[filter, search])
 
+const handleSerch = (e) =>{
+  e.preventDefault()
+  const searchText = e.target.search.value
+setSearch(searchText)
+}
 
   return (
     <div>
@@ -28,20 +30,25 @@ if(isPending) return <span className="loading block mx-auto text-6xl text-center
       {/* dropdown and search */}
 <div className="md:px-10 lg:px-24 pb-5 flex justify-between items-center">
 <div className="dropdown dropdown-hover">
-  <div tabIndex={0} role="button" className="border px-3 py-2 flex items-center gap-2 my-2 bg-cyan-300 rounded-md ">Category <FaChevronDown/> </div>
-  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 bg-base-100 rounded-box w-52">
-    <li><a>Technology</a></li>
-    <li><a>Web Development</a></li>
-    <li><a>Design</a></li>
-    <li><a>Artificial Intelligence</a></li>
-    <li><a>Mobile Development</a></li>
-    <li><a>Data Science</a></li>
-  </ul>
+  <select
+    onChange={e => setFilter(e.target.value)}
+    name='category'
+    id="category"
+    value={filter}
+    className="absolute z-10 inset-x-0 mt-1 bg-base-100 border rounded-md w-52">
+    <option value="Technology">Technology</option>
+    <option value="Web Development">Web Development</option>
+    <option value="Design">Design</option>
+    <option value="Artificial Intelligence">Artificial Intelligence</option>
+    <option value="Mobile Development">Mobile Development</option>
+    <option value="Data Science">Data Science</option>
+  </select>
 </div>
-<label className="input input-bordered flex items-center gap-2">
-  <input type="text" className="grow" placeholder="Search" />
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-</label>
+<form onSubmit={handleSerch} 
+className="input input-bordered mt-5 flex items-center gap-2">
+  <input type="text" name="search" className="grow" placeholder="Search" />
+  <button type="submit"><svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-5 h-5 opacity-70 z-10"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg></button>
+</form>
 </div>
       <hr />
       <div className="md:px-24 grid md:grid-cols-2 lg:grid-cols-3 mt-5 gap-8">
