@@ -96,7 +96,7 @@ return (
       </>
       :
       <>
-        <textarea name="comment" className="textarea textarea-bordered w-2/4 mt-2 "
+        <textarea name="comment" className="textarea textarea-bordered w-full md:w-2/4 mt-2 "
           placeholder="Write your comment here"></textarea>
         <input type="submit" value="Comment" className="block btn bg-cyan-200 hover:bg-cyan-300" />
 
@@ -105,7 +105,7 @@ return (
     </form>
   </div>
   {/* show the -comment here */}
-  <div className="mt-10 flex flex-col gap-10 w-2/4 ">
+  <div className="mt-10 flex flex-col gap-10 w-full md:w-2/4 ">
     {comment && comment?.map(item => <Comment key={item._id} item={item}></Comment>)}
   </div>
 </div>

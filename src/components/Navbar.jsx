@@ -22,7 +22,7 @@ console.log(user)
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#EDEDED" : "black",
+      color: isActive ? "#0047AB" : "black",
       
     };
   }}>All Blogs</NavLink>
@@ -30,7 +30,7 @@ console.log(user)
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#EDEDED" : "black",
+      color: isActive ? "#0047AB" : "black",
       
     };
   }}>Add Blogs</NavLink>
@@ -38,7 +38,7 @@ console.log(user)
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#EDEDED" : "black",
+      color: isActive ? "#0047AB" : "black",
       
     };
   }}>Featured Blogs</NavLink>
@@ -46,7 +46,7 @@ console.log(user)
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#EDEDED" : "black",
+      color: isActive ? "#0047AB" : "black",
       
     };
   }}>WishList</NavLink>}

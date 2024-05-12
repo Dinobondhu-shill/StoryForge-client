@@ -46,8 +46,8 @@ const handleDeleteWishlist = (_id) =>{
 
   return (
     <div className='border p-2 rounded-md  gap-3'>
-      <div className='flex gap-5'>
-      <img src={image} alt="" className='w-72 h-44 rounded-md'/>
+      <div className='flex flex-col md:flex-row gap-5'>
+      <img src={image} alt="" className='md:w-72 w-full h-44 rounded-md'/>
       <div className="mb-5">
         <h2 className="py-2 text-xl font-semibold">{title}</h2>
         <p>Posted on: {posted_date}</p>

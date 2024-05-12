@@ -61,13 +61,13 @@ const signIn =(email, password) =>{
         setUser(user)
         setLoading(false)
         const loggedEmail = {email : user.email}
-        if(user){
+        // if(user){
          
-          axios.post('http://localhost:5000/jwt', loggedEmail, {withCredentials:true})
-          .then(res=>{
-            console.log(res.data)
-          })
-        }
+        //   axios.post('http://localhost:5000/jwt', loggedEmail, {withCredentials:true})
+        //   .then(res=>{
+        //     console.log(res.data)
+        //   })
+        // }
           
     });
     return ()=> unsubscribe()

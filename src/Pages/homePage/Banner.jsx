@@ -12,7 +12,7 @@ const Banner = () => {
       <a href="#slide2" className="btn btn-circle bg-[#000000a4] z-50 text-white">❯</a>
     </div>
     <div className='absolute top-1/3 left-10 z-50 w-2/3 text-[#acf2fad5]'>
-      <h3 className='text-5xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
+      <h3 className='md:text-5xl text-3xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
     </div>
   </div> 
       {/* slide 2 */}
@@ -24,7 +24,7 @@ const Banner = () => {
       <a href="#slide3" className="btn btn-circle bg-[#000000a4] z-50 text-white">❯</a>
     </div>
     <div className='absolute top-1/3 left-10 z-50 w-2/3 text-[#acf2fad5]'>
-      <h3 className='text-5xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
+      <h3 className='md:text-5xl text-3xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
     </div>
   </div> 
       {/* slide 3 */}
@@ -36,7 +36,7 @@ const Banner = () => {
       <a href="#slide4" className="btn btn-circle bg-[#000000a4] z-50 text-white">❯</a>
     </div>
     <div className='absolute top-1/3 left-10 z-50 w-2/3 text-[#acf2fad5]'>
-      <h3 className='text-5xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
+      <h3 className='md:text-5xl text-3xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
     </div>
   </div> 
       {/* slide 4*/}
@@ -48,7 +48,7 @@ const Banner = () => {
       <a href="#slide1" className="btn btn-circle bg-[#000000a4] z-50 text-white">❯</a>
     </div>
     <div className='absolute top-1/3 left-10 z-50 w-2/3 text-[#acf2fad5]'>
-      <h3 className='text-5xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
+      <h3 className='md:text-5xl text-3xl font-semibold'>Discover, Learn, Connect storyForge for Diverse Insights</h3>
     </div>
   </div> 
   

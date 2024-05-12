@@ -42,9 +42,9 @@ const BlogsCard = ({blog, ref}) => {
     whileTap={{ scale: 1.1 }}
     drag="x" 
     dragConstraints={{ left: -20, right: 0 }}
-    className="w-72 text-start bg-[#aba6a613] p-4">
+    className="md:w-72  text-start bg-[#aba6a613] p-4">
       <div className="relative">
-      <img src={image} alt={title} className="w-72 h-44 rounded-lg"/>
+      <img src={image} alt={title} className="md:w-72 w-full h-44 rounded-lg"/>
       <h3 className="bg-[#4f68b896] w-fit rounded-lg px-1 absolute top-0 right-0 z-10 text-white">{category}</h3>
       </div>
      

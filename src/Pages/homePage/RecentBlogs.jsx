@@ -19,7 +19,7 @@ const RecentBlogs = () => {
     <div  className="md:px-10 lg:px-24 py-10 text-center">
       <h2 className="text-5xl">Recent Blogs</h2>
       <p className="py-4">Dive into recent update to explore more about world's news</p>
-      <div className="py-10 grid md:grid-cols-2 lg:grid-cols-3 items-center  gap-8">
+      <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8">
       {blogs?.slice(0,6).map(blog=> <BlogsCard key={blog._id} blog={blog}></BlogsCard>)}
       </div>
       <div className="w-full flex justify-center items-center py-4">

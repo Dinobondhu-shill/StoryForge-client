@@ -6,9 +6,9 @@ const Review = () => {
   return (
    <div className="mb-10">
     <h2 className="text-3xl font-bold text-center mb-10">Are you Confused??</h2>
-    <div className="flex ">
+    <div className="flex flex-col lg:flex-row ">
       {/* accordian */}
-    <div className="md:mx-10 lg:mx-24 space-y-3 p-4 rounded-md w-3/6 border-2">
+    <div className="md:mx-10 lg:mx-24 space-y-3 p-4 rounded-md w-full lg:w-3/6 border-2">
       <div className="collapse">
   <input type="radio" name="my-accordion-1"  /> 
   <div className="collapse-title text-xl font-medium border-b-2">
@@ -55,7 +55,7 @@ const Review = () => {
   </div>
 </div>
     </div>
-    <div className="w-3/6 md:block hidden">
+    <div className="lg:w-3/6 w-full ">
     <Lottie loop={true} animationData={faq} className="w-full" />
     </div>
     </div>

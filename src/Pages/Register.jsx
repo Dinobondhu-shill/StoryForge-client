@@ -39,7 +39,7 @@ const Register = () => {
       })
     }
   return (
-    <div className='lg:px-24 md:py-16 md:flex justify-between bg-[#ffffff]'>
+    <div className='lg:px-24 px-5 md:py-16 md:flex justify-between bg-[#ffffff]'>
       <div className='bg-[#0047ab42] rounded-lg w-full flex flex-col items-center justify-center'>
         <h3 className='text-3xl font-bold'><span className='text-4xl'>Connect with us </span><br /> and share your experience</h3>
       <div >
@@ -51,7 +51,7 @@ const Register = () => {
         <p className='font-semibold py-3'>Please complete to create your account</p>
       <form data-aos="zoom-in"
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-xl font-caption  rounded-xl py-2"
+        className="md:max-w-xl w-full font-caption  rounded-xl py-2"
       >
         <div className="mb-2">
           <h5 className="font-bold text-lg pl-2">Your Name:</h5>
@@ -104,7 +104,7 @@ const Register = () => {
             placeholder="Enter Your Password"
             className="input input-bordered w-full max-w-xs"
           />
-         <span className="cursor-pointer absolute top-[13px] text-[20px] z-10 right-4" onClick={()=> setShowPassword(!showPassword)}>
+         <span className="cursor-pointer absolute top-[13px] text-[20px] right-12 z-10 md:right-4" onClick={()=> setShowPassword(!showPassword)}>
           {
           showPassword ? <IoIosEyeOff/> :<IoIosEye/>
         }
