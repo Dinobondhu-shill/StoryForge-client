@@ -34,7 +34,7 @@ console.log(user)
       
     };
   }}>Add Blogs</NavLink>
-  <NavLink to={'/all-items'}
+  <NavLink to={"/featured-blog"}
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
@@ -42,14 +42,14 @@ console.log(user)
       
     };
   }}>Featured Blogs</NavLink>
-  <NavLink to={'/wishlist'}
+  {user && <NavLink to={'/wishlist'}
   style={({ isActive,}) => {
     return {
       fontWeight: isActive ? "bold" : "",
       color: isActive ? "#EDEDED" : "black",
       
     };
-  }}>WishList</NavLink>
+  }}>WishList</NavLink>}
   
   
  </>

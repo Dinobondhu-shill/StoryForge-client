@@ -73,7 +73,7 @@ return (
     <h2>Add Your Comment</h2>
     <form onSubmit={handleComment}>
 
-      {
+      { user &&
       userEmail === postedEmail ? <>
         <div className="flex justify-end">
           {/* ===================================modal============================== */}

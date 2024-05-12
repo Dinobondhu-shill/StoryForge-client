@@ -11,6 +11,7 @@ const BlogsCard = ({blog}) => {
   const {title, image, short_description, category, posted_date, _id} = blog
 
   const handleWishList = ()=>{
+    
     const userEmail = user.email
     const wishlistCard = {blog, userEmail}
     fetch('http://localhost:5000/wishlist',
@@ -49,7 +50,7 @@ const BlogsCard = ({blog}) => {
       </div>
       <div className="flex justify-between items-center">
       <Link to={`/all-blogs/${_id}`} className="px-4 py-2 border ">View Details</Link>
-      <button onClick={handleWishList} data-tip={"add to wishlist"} className="w-8 h-8 tooltip rounded-full border-2 flex items-center justify-center text-2xl font-bold text-red-500"><CiHeart/></button>
+      {user && <button  onClick={handleWishList} data-tip={"add to wishlist"} className="w-8 h-8 tooltip rounded-full border-2 flex items-center justify-center text-2xl font-bold text-red-500"><CiHeart/></button>}
       </div>
     </div>
   );
