@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 
 const WishlistCard = ({item}) => {
-  const {_id} = item
-const data= item?.blog
-const {image, short_description, title, posted_date, category, _id:post_id} = data
+  const {_id, blog} = item
+const image = blog?.image
+const short_description = blog?.short_description
+const title = blog?.title
+const posted_date = blog?.posted_date
+const category = blog?.category
+const post_id = blog?._id
 
 const handleDeleteWishlist = (_id) =>{
   Swal.fire({
