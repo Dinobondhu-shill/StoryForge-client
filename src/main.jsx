@@ -18,6 +18,7 @@ import Wishlist from './Pages/Wishlist';
 import Update from './Pages/Update';
 import FeaturedBlog from './Pages/FeaturedBlog';
 import PrivateRoute from './Pages/PrivateRoute';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
 
@@ -72,15 +73,14 @@ const router = createBrowserRouter([
 ]);
 
 // Create a client
-
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    
-
+    <QueryClientProvider client={queryClient}>
     <FirebaseProvider>
       <RouterProvider router={router} />
     </FirebaseProvider>
-    
+    </QueryClientProvider> 
   </React.StrictMode>,
 )
