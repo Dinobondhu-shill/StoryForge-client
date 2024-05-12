@@ -19,6 +19,9 @@ import Update from './Pages/Update';
 import FeaturedBlog from './Pages/FeaturedBlog';
 import PrivateRoute from './Pages/PrivateRoute';
 
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,10 +70,17 @@ const router = createBrowserRouter([
     ]
   },
 ]);
+
+// Create a client
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    
+
     <FirebaseProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </FirebaseProvider>
+    
   </React.StrictMode>,
 )
