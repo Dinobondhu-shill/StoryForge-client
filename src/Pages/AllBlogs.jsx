@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+
 import Marquee from "react-fast-marquee";
 import BlogsCard from "../components/BlogsCard";
 import { FaChevronDown } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const AllBlogs = () => {
-  const [blogs, setBlogs] = useState([])
-  useEffect(()=>{
-    fetch('http://localhost:5000/blogs')
-    .then(res=> res.json())
-    .then(data=>setBlogs(data))
-  },[])
+  const { isPending, data: blogs, error } = useQuery({
+    queryKey: ['blogs'],
+    queryFn: async ()=> {
+      const res = await fetch('http://localhost:5000/blogs')
+      return res.json()
+    }
+  })
+
+if(isPending) return <span className="loading block mx-auto text-6xl text-center loading-spinner text-info "></span>
+
 
   return (
     <div>
@@ -40,7 +45,7 @@ const AllBlogs = () => {
 </div>
       <hr />
       <div className="md:px-24 grid md:grid-cols-2 lg:grid-cols-3 mt-5 gap-8">
-      {blogs.map(blog=> <BlogsCard key={blog._id} blog={blog}></BlogsCard>)}
+      {blogs?.map(blog=> <BlogsCard key={blog._id} blog={blog}></BlogsCard>)}
       </div>
     </div>
   );

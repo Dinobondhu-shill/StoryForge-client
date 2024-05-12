@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const RecentBlogs = () => {
 
-  const { isPending, isError, data: blogs, error } = useQuery({
+  const { isPending, data: blogs, error } = useQuery({
     queryKey: ['blogs'],
     queryFn: async ()=> {
       const res = await fetch('http://localhost:5000/blogs')
@@ -13,14 +13,7 @@ const RecentBlogs = () => {
     }
   })
 
-  // const [blogs, setBlogs] = useState([])
-
-  // useEffect(()=>{
-  //   fetch('http://localhost:5000/blogs')
-  //   .then(res=> res.json())
-  //   .then(data=>setBlogs(data))
-  // },[]) 
-
+  if(isPending) return <span className="loading block mx-auto text-6xl text-center loading-spinner text-info "></span>
 
   return (
     <div  className="md:px-10 lg:px-24 py-10 text-center">

@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 
 const FeaturedBlog = () => {
-  const [blogs, setBlogs] = useState([])
-  useEffect(()=>{
-    fetch("http://localhost:5000/featured-blog")
-    .then(res=> res.json())
-    .then(data=> setBlogs(data))
-  },[])
+
+  const { isPending, data: blogs, error } = useQuery({
+    queryKey: ['blogs'],
+    queryFn: async ()=> {
+      const res = await fetch("http://localhost:5000/featured-blog")
+      return res.json()
+    }
+  })
+  
+  if(isPending) return <span className="loading block mx-auto text-6xl text-center loading-spinner text-info "></span>
+
 
   
   
@@ -30,7 +35,7 @@ const FeaturedBlog = () => {
         </thead>
         <tbody>
        {
-        blogs.slice(0,10).map(( blog, index) =>  <tr key={blog._id}>
+        blogs?.slice(0,10).map(( blog, index) =>  <tr key={blog._id}>
           <th>
             <label>
               <p>{index+1}.</p>

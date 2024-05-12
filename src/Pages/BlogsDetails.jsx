@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext} from "react";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../firebase/FirebaseProvider";
 import { ToastContainer, toast } from "react-toastify";
 import Comment from "../components/Comment";
 import { CiEdit } from "react-icons/ci";
+import { useQuery } from "@tanstack/react-query";
 
 
 const BlogsDetails = () => {
@@ -13,7 +14,6 @@ postedBy,
 postedEmail, photoOfOwner} = blog;
 
 const {user} = useContext(AuthContext)
-const [comment, setComments] = useState([])
 const userEmail = user?.email
 
 
@@ -44,12 +44,18 @@ form.reset()
 
 })
 }
+
 // comment show on the ui
-useEffect(()=>{
-fetch(`http://localhost:5000/allComments/${_id}`)
-.then(res=> res.json())
-.then(data=> setComments(data))
-},[_id])
+
+const {isPending, data: comment } = useQuery({
+  queryKey: ['blogs'],
+  queryFn: async ()=> {
+    const res = await fetch(`http://localhost:5000/allComments/${_id}`)
+    return res.json()
+  }
+})
+
+if(isPending) return <span className="loading block mx-auto text-6xl text-center loading-spinner text-info "></span>
 
 
 
@@ -100,7 +106,7 @@ return (
   </div>
   {/* show the -comment here */}
   <div className="mt-10 flex flex-col gap-10 w-2/4 ">
-    {comment && comment.map(item => <Comment key={item._id} item={item}></Comment>)}
+    {comment && comment?.map(item => <Comment key={item._id} item={item}></Comment>)}
   </div>
 </div>
 );
