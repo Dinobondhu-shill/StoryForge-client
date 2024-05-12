@@ -14,7 +14,7 @@ const BlogsCard = ({blog, ref}) => {
     
     const userEmail = user.email
     const wishlistCard = {blog, userEmail}
-    fetch('http://localhost:5000/wishlist',
+    fetch('https://storyforge-server.vercel.app/wishlist',
     {
     method: "POST",
     headers:{

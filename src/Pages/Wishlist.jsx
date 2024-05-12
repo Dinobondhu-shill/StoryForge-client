@@ -11,7 +11,7 @@ const Wishlist = () => {
   const { isPending, data: wishlist } = useQuery({
     queryKey: ['blogs'],
     queryFn: async ()=> {
-      const res = await  fetch(`http://localhost:5000/wishlist/${email}`)
+      const res = await  fetch(`https://storyforge-server.vercel.app/wishlist/${email}`)
       return res.json()
     }
   })

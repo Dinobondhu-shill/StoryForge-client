@@ -18,7 +18,7 @@ const handleUpdateBlog= (e)=>{
   const long_description = form.long_description.value
   const updatedBlog = {title, category, short_description, long_description, image}
   console.log(updatedBlog)
-  fetch(`http://localhost:5000/all-blogs/${_id}`,
+  fetch(`https://storyforge-server.vercel.app/all-blogs/${_id}`,
     {
       method: "PUT",
       headers:{

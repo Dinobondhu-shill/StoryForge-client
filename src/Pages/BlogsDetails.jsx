@@ -26,7 +26,7 @@ const postId = _id;
 const photo = user?.photoURL
 const name = user?.displayName
 const postComment = {comment, postId, photo, name }
-fetch('http://localhost:5000/comments',
+fetch('https://storyforge-server.vercel.app/comments',
 {
 method: "POST",
 headers:{
@@ -50,7 +50,7 @@ form.reset()
 const {isPending, data: comment } = useQuery({
   queryKey: ['blogs'],
   queryFn: async ()=> {
-    const res = await fetch(`http://localhost:5000/allComments/${_id}`)
+    const res = await fetch(`https://storyforge-server.vercel.app/allComments/${_id}`)
     return res.json()
   }
 })
@@ -69,6 +69,11 @@ return (
   </div>
   <div className="mb-5">
     <h2 className="pt-2 text-3xl font-semibold">{title}</h2>
+    <div className="flex gap-3 items-center">
+      <img src={photoOfOwner} className="w-10  h-10 rounded-full" alt="" />
+    <p className="">Author: {postedBy}</p>
+
+    </div>
     <p className="pb-5">Posted on: {posted_date}</p>
     <p className="font-sand text-[18px]">{long_description}</p>
   </div>

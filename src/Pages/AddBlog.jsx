@@ -21,7 +21,7 @@ const handleAddBlog = e =>{
   const blog = {title,category, image, short_description, long_description,postedBy, postedEmail, photoOfOwner, posted_date}
 
 
-  fetch('http://localhost:5000/add-blog',
+  fetch('https://storyforge-server.vercel.app/add-blog',
 {
 method: "POST",
 headers:{

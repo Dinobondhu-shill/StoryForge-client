@@ -63,7 +63,7 @@ const signIn =(email, password) =>{
         const loggedEmail = {email : user.email}
         // if(user){
          
-        //   axios.post('http://localhost:5000/jwt', loggedEmail, {withCredentials:true})
+        //   axios.post('https://storyforge-server.vercel.app/jwt', loggedEmail, {withCredentials:true})
         //   .then(res=>{
         //     console.log(res.data)
         //   })

@@ -23,7 +23,7 @@ const handleDeleteWishlist = (_id) =>{
     confirmButtonText: "Yes, delete it!"
     }).then((result) => {
     if (result.isConfirmed) {
-    fetch(`http://localhost:5000/wishlist/${_id}`,
+    fetch(`https://storyforge-server.vercel.app/wishlist/${_id}`,
     {
     method:"DELETE",
     

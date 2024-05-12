@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path:"/all-blogs/:id",
         element:<BlogsDetails></BlogsDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/all-blogs/${params.id}`)
+        loader:({params})=> fetch(`https://storyforge-server.vercel.app/all-blogs/${params.id}`)
       },
       {
         path:"/add-blog",
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       {
         path:"/update/:id",
         element:<PrivateRoute><Update></Update></PrivateRoute>,
-        loader:({params})=> fetch(`http://localhost:5000/all-blogs/${params.id}`)
+        loader:({params})=> fetch(`https://storyforge-server.vercel.app/all-blogs/${params.id}`)
       },
       {
         path:"/featured-blog",

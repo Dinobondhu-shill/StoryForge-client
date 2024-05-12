@@ -6,7 +6,7 @@ const FeaturedBlog = () => {
   const { isPending, data: blogs, error } = useQuery({
     queryKey: ['blogs'],
     queryFn: async ()=> {
-      const res = await fetch("http://localhost:5000/featured-blog")
+      const res = await fetch("https://storyforge-server.vercel.app/featured-blog")
       return res.json()
     }
   })

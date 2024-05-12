@@ -9,7 +9,7 @@ const AllBlogs = () => {
   const [search, setSearch] = useState([])
 
 useEffect(()=>{
-  fetch(`http://localhost:5000/blogs?filter=${filter}&search=${search}`)
+  fetch(`https://storyforge-server.vercel.app/blogs?filter=${filter}&search=${search}`)
   .then(res=> res.json())
   .then(data=> setBlogs(data))
 },[filter, search])
