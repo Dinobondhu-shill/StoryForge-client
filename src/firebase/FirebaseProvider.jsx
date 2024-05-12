@@ -2,6 +2,7 @@ import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUse
 import { createContext, useEffect, useState } from "react";
 import auth from "./firebase.config";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider();
@@ -57,10 +58,17 @@ const signIn =(email, password) =>{
   // observer
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-   
-        
         setUser(user)
         setLoading(false)
+        const loggedEmail = {email : user.email}
+        if(user){
+         
+          axios.post('http://localhost:5000/jwt', loggedEmail, {withCredentials:true})
+          .then(res=>{
+            console.log(res.data)
+          })
+        }
+          
     });
     return ()=> unsubscribe()
   }, []);
